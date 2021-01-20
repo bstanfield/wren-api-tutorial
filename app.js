@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const token = process.env.WREN_API_TOKEN;
-const url = 'https://wren-staging.herokuapp.com/api';
+const url = 'https://wren.co/api';
 
 // Retrieve carbon offset options from Wren's portfolio
 // and get the price to offset one ton of CO2 from the porfolio
