@@ -5,16 +5,17 @@ dotenv.config();
 const token = process.env.WREN_API_TOKEN;
 const url = 'https://wren.co/api';
 
-// Retrieve carbon offset options from Wren's portfolio
-// and get the price to offset one ton of CO2 from the porfolio
-// called 'Community Tree Planting'
+
+// Retrieve carbon offset options from Wren's portfolio and get the price to offset one ton of 
+// CO2 from the porfolio called 'Community Tree Planting'
 fetch(`${url}/portfolios`)
   .then(res => res.json())
   .then(json => console.log('data: ', json))
 
-// Based on the response of the GET request to /portfolios,
-// we know the project we want to use, 'Community Tree Planting',
-// costs $12.50 per ton of CO2 and has a portfolio `ID` of 2 in the API.
+
+
+// Based on the response from /portfolios, we know the project we want to use, 'Community 
+// Tree Planting', costs $12.50 per ton of CO2 and has a portfolio `ID` of 2.
 
 // Let's create a sample offset order of 1 ton of CO2 to 'Community Tree Planting'!
 fetch(`${url}/offset-orders`, {
@@ -32,9 +33,10 @@ fetch(`${url}/offset-orders`, {
   .then(res => res.json())
   .then(json => console.log('json: ', json))
 
+
 // Response: 
 // {
-//   dryRun: false,
+//   dryRun: true,
 //   amountCharged: 1250,
 //   currency: 'USD',
 //   tons: 1,
