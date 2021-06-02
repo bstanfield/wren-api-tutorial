@@ -3,21 +3,20 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const token = process.env.WREN_API_TOKEN;
-const url = 'https://wren.co/api';
+const url = 'https://www.wren.co/api';
 
 
 // Retrieve carbon offset options from Wren's portfolio and get the price to offset one ton of 
 // CO2 from the porfolio called 'Community Tree Planting'
 fetch(`${url}/portfolios`)
   .then(res => res.json())
-  .then(json => console.log('data: ', json))
-
+  .then(json => console.log('Portfolios: ', json))
 
 
 // Based on the response from /portfolios, we know the project we want to use, 'Community 
-// Tree Planting', costs $12.50 per ton of CO2 and has a portfolio `ID` of 2.
+// Tree Planting', costs $15.63 per ton of CO2 and has a portfolio ID of 2.
 
-// Let's create a sample offset order of 1 ton of CO2 to 'Community Tree Planting'!
+// Let's create a sample offset order of 1 ton of CO2 from 'Community Tree Planting'!
 fetch(`${url}/offset-orders`, {
   method: 'post',
   headers: {
@@ -27,23 +26,23 @@ fetch(`${url}/offset-orders`, {
   body: JSON.stringify({
     portfolioId: 2,
     tons: 1,
-    dryRun: true,
+    dryRun: true
   })
 })
   .then(res => res.json())
-  .then(json => console.log('json: ', json))
+  .then(json => console.log('Offset Order: ', json))
 
 
 // Response: 
 // {
 //   dryRun: true,
-//   amountCharged: 1250,
+//   amountCharged: 1563, (Counted in cents) 
 //   currency: 'USD',
 //   tons: 1,
 //   portfolio: {
 //     id: 2,
 //     name: 'Community tree planting',
-//     costPerTon: 12.5,
-//     description: 'Support a community focused afforestation program that sponsors tree planting and workshops for farmers in East Africa.'
+//     costPerTon: 15.63,
+//     ...
 //   }
 // }
