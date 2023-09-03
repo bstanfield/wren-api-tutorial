@@ -1,6 +1,7 @@
 # Wren API Tutorial (Node.js)
-Create a sample offset order using Wren.co's API.
-wren.co/api
+Create a sample offset order using [Wren.co](https://www.wren.co/)'s API.
+
+[wren.co/api](https://www.wren.co/wren-api)
 
 ## Getting started
 - `npm install`
